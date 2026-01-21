@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getTranscriptions, getCurrentUser, logoutUser, type Transcription } from '@/lib/directus';
 import { formatDuration } from '@/lib/utils';
+import { Footer } from '@/components/Footer';
 
 export default function DashboardPage() {
     const router = useRouter();
@@ -194,6 +195,7 @@ export default function DashboardPage() {
                     </div>
                 )}
             </main>
+            <Footer />
         </div>
     );
 }

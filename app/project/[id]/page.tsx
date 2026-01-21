@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { directus } from '@/lib/directus';
 import { readItem } from '@directus/sdk';
 import type { Transcription } from '@/lib/directus';
+import { Footer } from '@/components/Footer';
 
 interface Speaker {
     speaker: string;
@@ -407,6 +408,7 @@ export default function ProjectPage() {
                     </div>
                 )}
             </main>
+            <Footer />
         </div>
     );
 }

@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { uploadFile, createTranscription } from '@/lib/directus';
 import { formatFileSize } from '@/lib/utils';
+import { Footer } from '@/components/Footer';
 
 export default function UploadPage() {
     const router = useRouter();
@@ -298,6 +299,7 @@ export default function UploadPage() {
                     </CardContent>
                 </Card>
             </main>
+            <Footer />
         </div>
     );
 }

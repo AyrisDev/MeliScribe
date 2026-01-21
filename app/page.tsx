@@ -3,13 +3,13 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  Play,
   BarChart3,
   Users,
   Shield,
   Download,
-  CheckCircle2,
 } from "lucide-react";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -19,44 +19,7 @@ export default function Home() {
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[120px] -z-10" />
 
       {/* Top Navigation */}
-      <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-background-dark/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="MeliScribe Pro Logo" className="size-8 object-contain" />
-            <h2 className="text-base font-bold tracking-tight">
-              MeliScribe <span className="text-primary">Pro</span>
-            </h2>
-          </div>
-
-          <nav className="hidden md:flex items-center gap-8">
-            <a className="text-sm font-medium text-[#9ca7ba] hover:text-white transition-colors" href="#features">
-              Features
-            </a>
-            <a className="text-sm font-medium text-[#9ca7ba] hover:text-white transition-colors" href="#pricing">
-              Pricing
-            </a>
-            <a className="text-sm font-medium text-[#9ca7ba] hover:text-white transition-colors" href="#enterprise">
-              Diarization
-            </a>
-            <a className="text-sm font-medium text-[#9ca7ba] hover:text-white transition-colors" href="#api">
-              API
-            </a>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <Link href="/login">
-              <button className="text-sm font-semibold px-4 py-2 hover:text-primary transition-colors">
-                Login
-              </button>
-            </Link>
-            <Link href="/register">
-              <button className="bg-primary hover:bg-primary/90 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-all glow-blue">
-                Try for Free
-              </button>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -260,49 +223,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 bg-background-dark py-10">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="MeliScribe Pro Logo" className="size-6 object-contain" />
-              <h2 className="text-base font-bold tracking-tight">MeliScribe Pro</h2>
-            </div>
-            <p className="text-[#9ca7ba] text-sm leading-relaxed max-w-xs">
-              Advanced AI transcription for the modern professional workflow. Precise, secure, and blazingly fast.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <h4 className="font-semibold text-white text-sm">Product</h4>
-            <a className="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Transcription</a>
-            <a className="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Diarization</a>
-            <a className="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">API Access</a>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <h4 className="font-semibold text-white text-sm">Company</h4>
-            <a className="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">About Us</a>
-            <a className="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Security</a>
-            <a className="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Privacy Policy</a>
-          </div>
-
-          <div className="flex flex-col gap-3 col-span-2 md:col-span-1">
-            <h4 className="font-semibold text-white text-sm">Support</h4>
-            <a className="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Help Center</a>
-            <a className="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Contact</a>
-            <a className="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Status</a>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[#9ca7ba] text-xs">© 2026 MeliScribe Technologies Inc. All rights reserved.</p>
-          <div className="flex items-center gap-4 text-[#9ca7ba] text-xs">
-            <a href="#" className="hover:text-white transition-colors">Twitter</a>
-            <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-white transition-colors">GitHub</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
