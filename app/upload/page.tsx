@@ -71,7 +71,7 @@ export default function UploadPage() {
             setProgress(30);
             const uploadResult = await uploadFile(file);
 
-            if (!uploadResult.success) {
+            if (!uploadResult.success || !uploadResult.data) {
                 throw new Error('Dosya yüklenemedi');
             }
 
@@ -81,7 +81,7 @@ export default function UploadPage() {
             const transcriptionResult = await createTranscription({
                 title,
                 language,
-                audio_file: uploadResult.data.id,
+                audio_file: (uploadResult.data as any).id,
                 status: 'uploaded',
             });
 
@@ -139,10 +139,10 @@ export default function UploadPage() {
                             {/* File Drop Zone */}
                             <div
                                 className={`relative border-2 border-dashed rounded-xl p-12 text-center transition-all ${dragActive
-                                        ? 'border-indigo-500 bg-indigo-50'
-                                        : file
-                                            ? 'border-green-300 bg-green-50'
-                                            : 'border-gray-300 hover:border-indigo-400 hover:bg-indigo-50/50'
+                                    ? 'border-indigo-500 bg-indigo-50'
+                                    : file
+                                        ? 'border-green-300 bg-green-50'
+                                        : 'border-gray-300 hover:border-indigo-400 hover:bg-indigo-50/50'
                                     }`}
                                 onDragEnter={handleDrag}
                                 onDragLeave={handleDrag}
