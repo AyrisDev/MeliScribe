@@ -1,0 +1,129 @@
+PRD: MeliScribe SaaS (Directus Edition)
+Versiyon: 1.0 (MVP) Tarih: 21 Ocak 2026 Durum: Taslak Aşaması Altyapı: Self-Hosted Directus (Docker) + Next.js 16 + AssemblyAI
+
+1. Proje Özeti
+Kullanıcıların ses ve video dosyalarını yükleyerek, AssemblyAI altyapısı ile yüksek doğrulukta metne çevirebildiği, konuşmacı ayrımı (speaker diarization) yapabilen ve kendi sunucumuzda barınan bir SaaS platformu.
+
+Temel Fark: Backend logic (iş mantığı) kod yazarak değil, Directus Flows kullanılarak görsel otomasyonlarla yönetilecek.
+
+2. Hedef Kitle
+İçerik Üreticileri: Video altyazıları ve blog içerikleri için.
+
+Kurumsal: Toplantı notları ve aksiyon maddeleri çıkarmak için.
+
+Akademik: Ders ve röportaj kayıtlarını dijitalleştirmek için.
+
+3. Teknoloji Yığını (Tech Stack)
+Katman	Teknoloji	Açıklama
+Frontend	Next.js 16 (App Router)	UI, Server Actions, shadcn/ui.
+Backend / CMS	Directus (Self-Hosted)	Veritabanı, Auth, Dosya Yönetimi, API.
+Otomasyon	Directus Flows	Webhook karşılama, API istekleri (No-Code).
+Database	PostgreSQL	Directus'un arkasında çalışan veritabanı.
+AI Engine	AssemblyAI	STT (Speech-to-Text) ve Audio Intelligence.
+Deploy	Docker / Coolify	Kendi sunucunda barındırma.
+4. Veri Modeli (Directus Collections)
+Directus panelinde oluşturulacak koleksiyonlar ve alanlar:
+
+A. transcriptions (Ana Tablo)
+
+Kullanıcının yüklediği projeler burada tutulur.
+
+id (UUID) - Otomatik
+
+status (String - Dropdown): uploaded (yüklendi), processing (işleniyor), completed (bitti), error (hata).
+
+user (M2O -> directus_users): Kaydı oluşturan kullanıcı.
+
+audio_file (File -> directus_files): Yüklenen ses dosyası.
+
+title (String): Proje adı (örn: "Pazarlama Toplantısı").
+
+language (String): Dil kodu (örn: "tr", "en").
+
+assembly_id (String): AssemblyAI'dan dönen işlem ID'si.
+
+text_raw (Text Area): Ham metin çıktısı.
+
+speakers_json (JSON): Konuşmacı ayrımı yapılmış detaylı veri (Süre, Konuşmacı, Metin).
+
+summary (Text Area): AI tarafından çıkarılan özet.
+
+date_created (Timestamp) - Otomatik
+
+B. user_credits (Kredi Sistemi - MVP Sonrası)
+
+user_id (M2O -> directus_users)
+
+seconds_remaining (Integer): Kalan bakiye.
+
+5. İş Akışı ve Otomasyon (Directus Flows)
+Kod yazmadan, Directus Flows panelinde "Zincirleme Reaksiyon" kuracağız.
+
+Flow 1: "İşlemi Başlat" (Trigger: Item Created)
+
+Tetikleyici: transcriptions koleksiyonuna yeni kayıt girildiğinde.
+
+Read Data: Yüklenen dosyanın Directus içindeki URL'ini al.
+
+Request (HTTP): AssemblyAI /v2/transcript endpointine POST at.
+
+audio_url: Senin sunucundaki dosya adresi.
+
+speaker_labels: true
+
+webhook_url: https://senin-domain.com/flows/trigger/assembly-callback
+
+Update Data: İlgili kaydın status alanını processing yap ve dönen ID'yi assembly_id alanına yaz.
+
+Flow 2: "Sonucu Yakala" (Trigger: Webhook)
+
+Tetikleyici: AssemblyAI işlem bitince bizim belirlediğimiz URL'e POST atar.
+
+Webhook: /assembly-callback adresine gelen veriyi yakala.
+
+Request (HTTP): Gelen ID ile AssemblyAI'dan sonucu (GET /v2/transcript/{id}) çek.
+
+Update Data:
+
+Veritabanındaki ilgili kaydı bul (assembly_id ile eşleştir).
+
+text_raw alanına metni yaz.
+
+speakers_json alanına detaylı objeyi yaz.
+
+status alanını completed yap.
+
+6. Frontend Özellikleri (Next.js 16)
+Sayfa: /login
+
+Directus SDK kullanılarak Email/Password girişi.
+
+Token yönetimi (Cookie içinde saklama).
+
+Sayfa: /dashboard (Ana Ekran)
+
+Kullanıcının geçmiş çevirilerinin listesi.
+
+Durum rozetleri (Sarı: İşleniyor, Yeşil: Hazır).
+
+"Yeni Yükle" butonu.
+
+Sayfa: /upload (Yeni Proje)
+
+Dosya seçici (Drag & Drop).
+
+Yükleme progress bar.
+
+Form submit edildiğinde Directus'a dosyayı ve kaydı oluşturur.
+
+Sayfa: /project/[id] (Detay & Editör)
+
+Sol Panel: Ses oynatıcı (Player).
+
+Sağ Panel: Transkript editörü.
+
+Konuşmacı isimlerini düzenleyebilme (Speaker A -> "Ali Bey").
+
+Metne tıklayınca sesin o saniyesine gitme (Seek).
+
+Export Butonları: .TXT ve .SRT indirme.

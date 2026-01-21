@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MeliScribe - AI Transcription</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2574f4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1115",
+                        "card-dark": "#1b2027",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(27, 32, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(37, 116, 244, 0.4);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #9ca7ba);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-radial-gradient {
+            background: radial-gradient(circle at 50% 50%, #1a2436 0%, #0f1115 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-white selection:bg-primary/30">
+    <div class="relative min-h-screen flex flex-col">
+        <!-- Radial Background Accents -->
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10"></div>
+        <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[120px] -z-10">
+        </div>
+        <!-- Top Navigation -->
+        <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-background-dark/80 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="size-8 bg-primary rounded-lg flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white">graphic_eq</span>
+                    </div>
+                    <h2 class="text-xl font-bold tracking-tight">MeliScribe</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium text-[#9ca7ba] hover:text-white transition-colors"
+                        href="#">Features</a>
+                    <a class="text-sm font-medium text-[#9ca7ba] hover:text-white transition-colors"
+                        href="#">Pricing</a>
+                    <a class="text-sm font-medium text-[#9ca7ba] hover:text-white transition-colors"
+                        href="#">Enterprise</a>
+                    <a class="text-sm font-medium text-[#9ca7ba] hover:text-white transition-colors" href="#">API</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="text-sm font-bold px-4 py-2 hover:text-primary transition-colors">Login</button>
+                    <button
+                        class="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-6 py-2.5 rounded-lg transition-all glow-blue">
+                        Try for Free
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1">
+            <!-- Hero Section -->
+            <section class="max-w-7xl mx-auto px-6 py-20 lg:py-32 grid lg:grid-cols-2 gap-16 items-center">
+                <div class="flex flex-col gap-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        New: Whisper v3 Integration
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gradient">
+                        Transcribe Audio to Text in <span class="text-primary italic">Minutes</span>, Not Hours.
+                    </h1>
+                    <p class="text-lg lg:text-xl text-[#9ca7ba] max-w-xl leading-relaxed">
+                        The industry-standard AI engine for journalists, creators, and legal pros. Get human-level
+                        accuracy in over 90 languages instantly.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <button
+                            class="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white text-lg font-bold px-8 py-4 rounded-xl transition-all glow-blue flex items-center justify-center gap-2">
+                            Start Transcribing Free
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                        <button
+                            class="w-full sm:w-auto bg-white/5 hover:bg-white/10 border border-white/10 text-white text-lg font-bold px-8 py-4 rounded-xl transition-all flex items-center justify-center gap-2">
+                            View Demo
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm text-[#9ca7ba]">
+                        <div class="flex -space-x-2">
+                            <img class="size-8 rounded-full border-2 border-background-dark bg-gray-800"
+                                data-alt="user avatar 1"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJW9kjRL_VPZkldNC28ykH6CGXKzBB8lj5Pb9LFR_hZNz0oPfJlCUkOr-emXWwARHvxrPq1QKkXOHgIrbyDE3v8_RkL3uC6jIRDelnavzz1ARVbCgnDAVpZja62Wl-ZZwouWV47E9ewsHxEsQQw5VMdfByF9co2yMW2VRIB3rzH8DGkmDGr-0su_iOE6ayGw91nz3NiKqRW5PKnj-FjAvvR1uSziURdiw3eF1eliGk4t-3HQua7hKchD1eP5plVMMoL5BmXcFfUUrU" />
+                            <img class="size-8 rounded-full border-2 border-background-dark bg-gray-800"
+                                data-alt="user avatar 2"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzRvKGhGcKxm8nh7NAOr8jmbYD-qG5RZJXmwhXFLneqQtmwsxdCorddlFmfS13DB3yRXV_R4duwS1XVts7pCt1tJ8NSVUEjIJLyxLRpVcA9C7TjKCwiAl9dMW8OZsFQlJ5BvrNei-u8-lug3DkBFWbHVVifc95Tu5fKsOvzo8dmqsp44smT9YkuZG5HzY9Bo_NdxxzZ7uU4IOTkr_fxs-QKIM05SGJJuV1TsVpGjsUZ0M5RcexpRFkK8tm7jRYLnfWiXEKfKqLv8VT" />
+                            <img class="size-8 rounded-full border-2 border-background-dark bg-gray-800"
+                                data-alt="user avatar 3"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPyaMKuAXMlbAVgRrJZCXowRADLhXeOou6WTQjKiLbbWOAPYkRGb3XPnIwH9n0nyfI8kSx-hvK8LgsgnR2UqvqzcxRHfDRUJ1PnQlf2IDumWpqTXnTzrprNQm_W9GVskZDczqtMBxZlxi3mlCK8pXc0mVWoHoxsNx63bfra4Ku_eavcXlI-LPhhoUINq__XZPX8cyaZvEkE53jNtZjDLVwYPdKTpvy2mLeBJ7d0BDAkygZMvm7AiPqlIMi5SNk9YdZUG5hNUFXEC-A" />
+                        </div>
+                        <span>Joined by 10,000+ professionals</span>
+                    </div>
+                </div>
+                <!-- Hero Visual Hook -->
+                <div class="relative group">
+                    <div
+                        class="absolute inset-0 bg-primary/20 rounded-2xl blur-3xl group-hover:bg-primary/30 transition-all duration-500">
+                    </div>
+                    <div
+                        class="relative bg-card-dark/50 border border-white/10 rounded-2xl p-8 overflow-hidden aspect-square flex flex-col justify-center gap-8 shadow-2xl">
+                        <!-- Waveform Mockup -->
+                        <div class="flex items-end gap-1 h-32 justify-center">
+                            <div class="w-2 bg-primary rounded-full h-1/2 animate-pulse"></div>
+                            <div class="w-2 bg-primary/80 rounded-full h-3/4"></div>
+                            <div class="w-2 bg-primary/60 rounded-full h-full"></div>
+                            <div class="w-2 bg-primary/40 rounded-full h-2/3"></div>
+                            <div class="w-2 bg-primary rounded-full h-4/5 animate-pulse"></div>
+                            <div class="w-2 bg-primary/70 rounded-full h-1/2"></div>
+                            <div class="w-2 bg-primary/50 rounded-full h-3/4"></div>
+                            <div class="w-2 bg-primary rounded-full h-full"></div>
+                        </div>
+                        <!-- Transformed Text Mockup -->
+                        <div class="flex flex-col gap-3">
+                            <div class="h-4 bg-white/10 rounded-full w-full"></div>
+                            <div class="h-4 bg-white/10 rounded-full w-5/6"></div>
+                            <div class="h-4 bg-primary/20 rounded-full w-4/6 border border-primary/30"></div>
+                            <div class="h-4 bg-white/10 rounded-full w-full"></div>
+                        </div>
+                        <div
+                            class="absolute bottom-8 right-8 flex items-center gap-2 bg-background-dark/80 backdrop-blur px-4 py-2 rounded-lg border border-white/10">
+                            <span class="material-symbols-outlined text-green-400 text-sm">verified</span>
+                            <span class="text-xs font-medium uppercase tracking-tighter">AI Processing Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Social Proof -->
+            <section class="max-w-7xl mx-auto px-6 py-10 border-t border-white/5">
+                <p class="text-center text-sm font-medium text-[#9ca7ba] mb-8 uppercase tracking-widest">Trusted by
+                    industry leaders</p>
+                <div
+                    class="flex flex-wrap justify-center items-center gap-12 opacity-40 grayscale hover:grayscale-0 transition-all">
+                    <div class="flex items-center gap-2 text-xl font-bold"> <span
+                            class="material-symbols-outlined">hub</span> FORBES </div>
+                    <div class="flex items-center gap-2 text-xl font-bold"> <span
+                            class="material-symbols-outlined">data_object</span> REUTERS </div>
+                    <div class="flex items-center gap-2 text-xl font-bold"> <span
+                            class="material-symbols-outlined">terminal</span> WIRED </div>
+                    <div class="flex items-center gap-2 text-xl font-bold"> <span
+                            class="material-symbols-outlined">architecture</span> VOX </div>
+                    <div class="flex items-center gap-2 text-xl font-bold"> <span
+                            class="material-symbols-outlined">token</span> THE VERGE </div>
+                </div>
+            </section>
+            <!-- Features Bento Grid -->
+            <section class="max-w-7xl mx-auto px-6 py-24">
+                <div class="flex flex-col gap-4 mb-16 text-center">
+                    <h2 class="text-4xl font-bold tracking-tight">Engineered for Precision</h2>
+                    <p class="text-[#9ca7ba] max-w-2xl mx-auto text-lg leading-relaxed">
+                        Experience the power of high-end AI transcription with our professional-grade toolset designed
+                        for high-stakes workflows.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[240px]">
+                    <!-- Large Feature: Accuracy -->
+                    <div
+                        class="md:col-span-2 md:row-span-2 glass-card rounded-2xl p-8 flex flex-col justify-between group overflow-hidden">
+                        <div
+                            class="absolute -right-20 -top-20 size-64 bg-primary/10 rounded-full blur-[80px] group-hover:bg-primary/20 transition-all">
+                        </div>
+                        <div class="relative z-10">
+                            <div class="size-12 rounded-xl bg-primary/20 flex items-center justify-center mb-6">
+                                <span class="material-symbols-outlined text-primary text-3xl">insights</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">99% Human-Level Precision</h3>
+                            <p class="text-[#9ca7ba] max-w-xs">Advanced neural engines ensure industry-leading accuracy
+                                even in noisy environments.</p>
+                        </div>
+                        <div class="relative z-10 mt-auto">
+                            <div class="w-full h-32 flex items-end gap-2">
+                                <div class="flex-1 bg-primary/20 h-1/2 rounded-t-lg"></div>
+                                <div class="flex-1 bg-primary/40 h-2/3 rounded-t-lg"></div>
+                                <div class="flex-1 bg-primary/60 h-3/4 rounded-t-lg"></div>
+                                <div class="flex-1 bg-primary h-full rounded-t-lg glow-blue"></div>
+                                <div class="flex-1 bg-primary/80 h-4/5 rounded-t-lg"></div>
+                                <div class="flex-1 bg-primary/50 h-3/5 rounded-t-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Medium Feature: Speaker ID -->
+                    <div
+                        class="md:col-span-2 lg:col-span-2 glass-card rounded-2xl p-8 flex flex-col justify-between group">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="size-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6">
+                                    <span
+                                        class="material-symbols-outlined text-purple-400 text-3xl">record_voice_over</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3">Speaker Diarization</h3>
+                                <p class="text-[#9ca7ba]">Automatically identify and label different speakers throughout
+                                    your recordings.</p>
+                            </div>
+                            <div class="flex -space-x-3">
+                                <div
+                                    class="size-12 rounded-full border-4 border-card-dark bg-blue-500 flex items-center justify-center font-bold">
+                                    A</div>
+                                <div
+                                    class="size-12 rounded-full border-4 border-card-dark bg-purple-500 flex items-center justify-center font-bold">
+                                    B</div>
+                                <div
+                                    class="size-12 rounded-full border-4 border-card-dark bg-emerald-500 flex items-center justify-center font-bold">
+                                    C</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Small Feature: Privacy -->
+                    <div class="glass-card rounded-2xl p-8 flex flex-col justify-between">
+                        <div class="size-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-green-400 text-3xl">shield_lock</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Secure &amp; Private</h3>
+                            <p class="text-sm text-[#9ca7ba]">SOC2 Type II compliant, AES-256 encrypted at rest.</p>
+                        </div>
+                    </div>
+                    <!-- Small Feature: Export -->
+                    <div class="glass-card rounded-2xl p-8 flex flex-col justify-between">
+                        <div class="size-12 rounded-xl bg-orange-500/20 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-orange-400 text-3xl">unarchive</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Universal Export</h3>
+                            <p class="text-sm text-[#9ca7ba]">SRT, VTT, DOCX, TXT. Seamless integrations with your
+                                stack.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- CTA Section -->
+            <section class="max-w-5xl mx-auto px-6 py-24 text-center">
+                <div
+                    class="bg-gradient-to-br from-primary/20 to-purple-600/10 border border-white/10 rounded-3xl p-12 md:p-20 relative overflow-hidden">
+                    <div class="absolute -left-20 -bottom-20 size-64 bg-primary/20 rounded-full blur-[100px]"></div>
+                    <div class="relative z-10 flex flex-col items-center gap-8">
+                        <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Ready to stop typing?</h2>
+                        <p class="text-[#9ca7ba] text-lg max-w-xl">
+                            Join thousands of professionals who save 5+ hours a week on transcription. No credit card
+                            required to start.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button
+                                class="bg-primary hover:bg-primary/90 text-white text-lg font-bold px-10 py-4 rounded-xl transition-all glow-blue">
+                                Get Started Free
+                            </button>
+                            <button
+                                class="bg-white/5 hover:bg-white/10 border border-white/10 text-white text-lg font-bold px-10 py-4 rounded-xl transition-all">
+                                Contact Sales
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="border-t border-white/5 bg-background-dark py-12">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="size-8 bg-primary rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-sm">graphic_eq</span>
+                        </div>
+                        <h2 class="text-lg font-bold tracking-tight">MeliScribe</h2>
+                    </div>
+                    <p class="text-[#9ca7ba] text-sm leading-relaxed max-w-xs">
+                        Advanced AI transcription for the modern professional workflow. Precise, secure, and blazingly
+                        fast.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-white">Product</h4>
+                    <a class="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Transcription</a>
+                    <a class="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Diarization</a>
+                    <a class="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">API Access</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-white">Company</h4>
+                    <a class="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">About Us</a>
+                    <a class="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Security</a>
+                    <a class="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Privacy Policy</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-white">Support</h4>
+                    <a class="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Help Center</a>
+                    <a class="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Contact</a>
+                    <a class="text-sm text-[#9ca7ba] hover:text-white transition-colors" href="#">Status</a>
+                </div>
+            </div>
+            <div
+                class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-white/5 flex flex-col md:row items-center justify-between gap-4">
+                <p class="text-[#9ca7ba] text-xs">© 2024 MeliScribe Technologies Inc. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a class="text-[#9ca7ba] hover:text-white transition-colors" href="#"><span
+                            class="material-symbols-outlined">alternate_email</span></a>
+                    <a class="text-[#9ca7ba] hover:text-white transition-colors" href="#"><span
+                            class="material-symbols-outlined">share</span></a>
+                    <a class="text-[#9ca7ba] hover:text-white transition-colors" href="#"><span
+                            class="material-symbols-outlined">public</span></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

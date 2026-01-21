@@ -1,0 +1,83 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: meliscribe_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: directus
+      POSTGRES_PASSWORD: directus
+      POSTGRES_DB: directus
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - meliscribe
+
+  directus:
+    image: directus/directus:latest
+    container_name: meliscribe_directus
+    restart: unless-stopped
+    ports:
+      - "8055:8055"
+    volumes:
+      - directus_uploads:/directus/uploads
+      - directus_extensions:/directus/extensions
+    environment:
+      # General
+      KEY: "255d861b-5ea1-5996-9aa3-922530ec40b1"
+      SECRET: "6116487b-cda1-52c2-b5b5-c8022c45e263"
+
+      # Database
+      DB_CLIENT: "pg"
+      DB_HOST: "postgres"
+      DB_PORT: "5432"
+      DB_DATABASE: "directus"
+      DB_USER: "directus"
+      DB_PASSWORD: "directus"
+
+      # Admin User (First Time Setup)
+      ADMIN_EMAIL: "admin@meliscribe.com"
+      ADMIN_PASSWORD: "admin123"
+
+      # CORS
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "http://localhost:3000,http://localhost:8055"
+
+      # Public URL
+      PUBLIC_URL: "http://localhost:8055"
+
+      # File Storage
+      STORAGE_LOCATIONS: "local"
+      STORAGE_LOCAL_DRIVER: "local"
+      STORAGE_LOCAL_ROOT: "./uploads"
+
+      # Rate Limiting
+      RATE_LIMITER_ENABLED: "true"
+      RATE_LIMITER_POINTS: "25"
+      RATE_LIMITER_DURATION: "1"
+
+      # Cache
+      CACHE_ENABLED: "true"
+
+      # Email (Optional - for password reset, etc.)
+      # EMAIL_FROM: 'noreply@meliscribe.com'
+      # EMAIL_TRANSPORT: 'smtp'
+      # EMAIL_SMTP_HOST: 'smtp.example.com'
+      # EMAIL_SMTP_PORT: '587'
+      # EMAIL_SMTP_USER: 'user@example.com'
+      # EMAIL_SMTP_PASSWORD: 'password'
+
+    depends_on:
+      - postgres
+    networks:
+      - meliscribe
+
+volumes:
+  postgres_data:
+  directus_uploads:
+  directus_extensions:
+
+networks:
+  meliscribe:
+    driver: bridge
