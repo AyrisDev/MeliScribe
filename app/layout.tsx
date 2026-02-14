@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         <PlausibleProvider 
-          domain="meliscribe.pro" 
+          domain="meliscribe.app" 
           customDomain="https://analytics.ayris.tech"
           selfHosted
         >
@@ -34,7 +34,7 @@ export default function RootLayout({
           {/* Self-hosted plausible script via local proxy */}
           <Script 
             defer 
-            data-domain="meliscribe.pro" 
+            data-domain="meliscribe.app" 
             src="/pl.js" 
             strategy="afterInteractive"
           />
