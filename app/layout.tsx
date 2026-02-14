@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import PlausibleProvider from "next-plausible";
+import RouteTracker from "@/components/RouteTracker";
+import Script from "next/script";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -20,7 +23,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${spaceGrotesk.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
+        <PlausibleProvider 
+          domain="meliscribe.pro" 
+          customDomain="https://analytics.ayris.tech"
+          selfHosted
+        >
+          <RouteTracker />
+          {children}
+          {/* Self-hosted plausible script via local proxy */}
+          <Script 
+            defer 
+            data-domain="meliscribe.pro" 
+            src="/pl.js" 
+            strategy="afterInteractive"
+          />
+        </PlausibleProvider>
+      </body>
     </html>
   );
 }
