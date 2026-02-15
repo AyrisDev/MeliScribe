@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getTranscriptions, getCurrentUser, logoutUser, type Transcription } from '@/lib/directus';
@@ -80,7 +81,13 @@ export default function DashboardPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <img src="/logo.png" alt="MeliScribe Pro Logo" className="size-10 object-contain" />
+                            <Image 
+                                src="/logo.png" 
+                                alt="MeliScribe Pro Logo" 
+                                width={40}
+                                height={40}
+                                className="size-10 object-contain" 
+                            />
                             <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                                 MeliScribe <span className="text-primary">Pro</span>
                             </h1>

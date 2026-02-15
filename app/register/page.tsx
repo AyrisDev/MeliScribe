@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { registerUser } from '@/lib/directus';
@@ -47,7 +48,13 @@ export default function RegisterPage() {
                 {/* Logo & Title */}
                 <div className="text-center mb-8">
                     <div className="inline-flex items-center justify-center w-20 h-20 mb-4 transition-transform hover:scale-110 duration-300">
-                        <img src="/logo.png" alt="MeliScribe Pro Logo" className="w-full h-full object-contain" />
+                        <Image 
+                            src="/logo.png" 
+                            alt="MeliScribe Pro Logo" 
+                            width={80}
+                            height={80}
+                            className="w-full h-full object-contain" 
+                        />
                     </div>
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                         Hemen Başla

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
     return (
@@ -8,7 +9,13 @@ export function Footer() {
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div className="flex flex-col gap-3">
                     <Link href="/" className="flex items-center gap-2 mb-4">
-                        <img src="/logo.png" alt="MeliScribe Pro Logo" className="size-6 object-contain" />
+                        <Image 
+                            src="/logo.png" 
+                            alt="MeliScribe Pro Logo" 
+                            width={24}
+                            height={24}
+                            className="size-6 object-contain" 
+                        />
                         <h2 className="text-base font-bold tracking-tight text-white">MeliScribe Pro</h2>
                     </Link>
                     <p className="text-[#9ca7ba] text-sm leading-relaxed max-w-xs">
@@ -45,7 +52,7 @@ export function Footer() {
                 </div>
                 <div className="flex flex-col gap-1">
                     <p className="text-[#9ca7ba] text-[10px]">
-                        Created by <a href="https://ayris.tech" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">ayris.tech</a>
+                        Created by <a href="https://ayris.tech" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold text-white/80">ayris.tech</a>
                     </p>
                 </div>
 

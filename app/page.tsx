@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BarChart3,
@@ -61,26 +62,26 @@ export default function Home() {
             {/* Social Proof */}
             <div className="flex items-center gap-3 text-sm text-[#9ca7ba] mt-2">
               <div className="flex -space-x-2">
-                <img
+                <Image
                   className="w-7 h-7 rounded-full border-2 border-background-dark bg-gray-800 object-cover"
                   alt="user avatar 1"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJW9kjRL_VPZkldNC28ykH6CGXKzBB8lj5Pb9LFR_hZNz0oPfJlCUkOr-emXWwARHvxrPq1QKkXOHgIrbyDE3v8_RkL3uC6jIRDelnavzz1ARVbCgnDAVpZja62Wl-ZZwouWV47E9ewsHxEsQQw5VMdfByF9co2yMW2VRIB3rzH8DGkmDGr-0su_iOE6ayGw91nz3NiKqRW5PKnj-FjAvvR1uSziURdiw3eF1eliGk4t-3HQua7hKchD1eP5plVMMoL5BmXcFfUUrU"
-                  width="28"
-                  height="28"
+                  width={28}
+                  height={28}
                 />
-                <img
+                <Image
                   className="w-7 h-7 rounded-full border-2 border-background-dark bg-gray-800 object-cover"
                   alt="user avatar 2"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzRvKGhGcKxm8nh7NAOr8jmbYD-qG5RZJXmwhXFLneqQtmwsxdCorddlFmfS13DB3yRXV_R4duwS1XVts7pCt1tJ8NSVUEjIJLyxLRpVcA9C7TjKCwiAl9dMW8OZsFQlJ5BvrNei-u8-lug3DkBFWbHVVifc95Tu5fKsOvzo8dmqsp44smT9YkuZG5HzY9Bo_NdxxzZ7uU4IOTkr_fxs-QKIM05SGJJuV1TsVpGjsUZ0M5RcexpRFkK8tm7jRYLnfWiXEKfKqLv8VT"
-                  width="28"
-                  height="28"
+                  width={28}
+                  height={28}
                 />
-                <img
+                <Image
                   className="w-7 h-7 rounded-full border-2 border-background-dark bg-gray-800 object-cover"
                   alt="user avatar 3"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPyaMKuAXMlbAVgRrJZCXowRADLhXeOou6WTQjKiLbbWOAPYkRGb3XPnIwH9n0nyfI8kSx-hvK8LgsgnR2UqvqzcxRHfDRUJ1PnQlf2IDumWpqTXnTzrprNQm_W9GVskZDczqtMBxZlxi3mlCK8pXc0mVWoHoxsNx63bfra4Ku_eavcXlI-LPhhoUINq__XZPX8cyaZvEkE53jNtZjDLVwYPdKTpvy2mLeBJ7d0BDAkygZMvm7AiPqlIMi5SNk9YdZUG5hNUFXEC-A"
-                  width="28"
-                  height="28"
+                  width={28}
+                  height={28}
                 />
               </div>
               <span className="text-xs">Joined by 10,000+ professionals</span>
